@@ -1,5 +1,5 @@
 public class problem{
-	public static void mainn(String[] args){
+	public static void main(String[] args){
 		/*String[][] in = {{"O","O","O"},
 						 {"X","O","X"},
 						 {"X","X","-"}}; 
