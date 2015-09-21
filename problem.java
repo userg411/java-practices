@@ -1,3 +1,5 @@
+import java.util.HashMap;
+import java.util.Iterator;
 public class problem{
 	public static void main(String[] args){
 		/*String[][] in = {{"O","O","O"},
@@ -57,12 +59,30 @@ public class problem{
 		//System.out.println(Chocolates(8932434 ,22));
 		//System.out.println(nineDupe(9));
 		//System.out.println(virusScan("sddszzvirusxxxx"));
-		int [] A  = {6,4}, B = {1,2};
-		System.out.println(19958%8);
+		int[] A = {3,3,4,2,4,4,2,4,4};
+		System.out.println(Majority_Element(9, A));
 		
 	}
 	
-	
+	static int Majority_Element(int N, int[] array){
+		HashMap<Integer, Integer> cache = new HashMap<Integer, Integer>();	
+		for(int i=0;i<N;i++){
+			if(cache.get(array[i])==null)
+				cache.put(array[i], 1);
+			else
+				cache.put(array[i], cache.get(array[i])+1);
+		}		
+		
+		Iterator<Integer> keySetIterator = cache.keySet().iterator(); 						
+		while(keySetIterator.hasNext())
+		{ 
+			Integer key = keySetIterator.next();
+ 			if(cache.get(key)>N/2)
+ 				return key;
+ 		}
+
+		return -1;
+	}
 	static int BestMAtch(int N, int[] AL_AHLY_Goals, int[] Zamalek_Goals) {
 		if(N==1) return 0;
 		int d=AL_AHLY_Goals[0] - Zamalek_Goals[0],r = Zamalek_Goals[0], x=0;
