@@ -1,5 +1,5 @@
 public class problem{
-	public static void main(String[] args){
+	public static void mainn(String[] args){
 		/*String[][] in = {{"O","O","O"},
 						 {"X","O","X"},
 						 {"X","X","-"}}; 
@@ -87,9 +87,11 @@ public class problem{
 	    
     	 return x;
 	}
+	
 	static boolean virusScan(String input) {
 		return input.indexOf("sdd")>=0&&true;
 	}
+	
 	static int nineDupe(int n)
 	{
 		int r=n;
