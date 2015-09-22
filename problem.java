@@ -63,25 +63,36 @@ public class problem{
 		//System.out.println(virusScan("sddszzvirusxxxx"));
 		//int[] A = {3,3,4,2,4,4,2,4,4};
 		//System.out.println(Majority_Element(9, A));
-		System.out.println(correct_parentheses("[]]"));
+		System.out.println(correct_parentheses("()()[()()()[]([][])]"));
 	}
 	static boolean correct_parentheses(String seq){
-		if(seq.length()==1) return false;
-		char a = seq.charAt(0);
 		
-		int i=-1;
+		Stack s = new Stack();
 		
-		if(a == '(')
-			i = seq.indexOf(')');
-		else if(a=='[')
-			i = seq.indexOf(']');
-		else 
-			return false;
-		if(i==-1)
-				return false;
-				
-		return correct_parentheses(seq.substring(1,i));
-				
+		for(int i=0;i<seq.length();i++){
+			
+			if(seq.charAt(i)=='('||seq.charAt(i)=='['){
+				s.push(seq.charAt(i));
+				System.out.println("Pushed: "+seq.charAt(i));
+			}
+			else if (seq.charAt(i)==')'){
+				if(!s.empty()&&(char)s.peek()=='('){
+					s.pop();
+					//System.out.println("Popped: "+s.pop());
+				}
+				else return false;
+			}
+			else if (seq.charAt(i)==']'){
+				if(!s.empty()&&(char)s.peek()=='['){
+					//s.pop();
+					System.out.println("Popped: "+s.pop());
+				}
+				else return false;
+			}
+			
+		}
+		return s.empty();
+		
 		
 	
 	}
