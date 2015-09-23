@@ -5,7 +5,8 @@ public class runtimeTest{
 		System.out.println("Available processors to JVM: "+rt.availableProcessors());
 		System.out.println("Free memory in JVM: "+rt.freeMemory());
 		rt.addShutdownHook(new sdhook());
-		Process p =	rt.exec("ps");
+		//Process p =	rt.exec("cmd /c chrome nur.kz tengrinews.kz lenta.ru azh.kz",args, new File("C:/Program Files/Google/Chrome/Application"));
+		Process p =	rt.exec("cmd /c chrome nur.kz tengrinews.kz lenta.ru azh.kz");
 		BufferedReader in = new BufferedReader(
                                 new InputStreamReader(p.getInputStream()));
             String line = null;
