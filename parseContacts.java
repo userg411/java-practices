@@ -9,7 +9,7 @@ public class parseContacts{
 	
 	public static void main(String args[]) throws Exception{
 		contacts = new ArrayList<Contact>();
-		List <String> lines  = Files.readAllLines(Paths.get("out.vcf"),Charset.defaultCharset());
+		List <String> lines  = Files.readAllLines(Paths.get("in.vcf"),Charset.defaultCharset());
 		for(int i=0; i<lines.size();){
 			String name = "";
 			String number = "";
@@ -37,9 +37,17 @@ public class parseContacts{
 				result.add(c);
 		}
 		Collections.sort(result);
-		for(Contact c:result)
-			System.out.println(c.name + "\t" + c.number);
-		System.out.println(result.size());
+		String out = "";
+		for(Contact c:result){
+			out+="BEGIN:VCARD" + "\n";
+			out+="FN:" +c.name+ "\n";
+			out+="TEL;CELL;PREF:" +c.number+ "\n";
+			out+="END:VCARD" + "\n";
+		}
+		
+		//System.out.println(out);
+		
+		Files.write(Paths.get("out.vcf"), out.getBytes());
 		
 	}
 	static class Contact implements Comparable <Contact>{
