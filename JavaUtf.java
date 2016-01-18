@@ -29,11 +29,11 @@ for (File f : path.listFiles())
 
 {
 
-element0 = new String("привет"); 
+    element0 = new String("привет"); 
 
-bytes = f.getName().getBytes("UTF-8");
-element = new String(bytes, "UTF-8"); 
-System.out.println(element);
+    bytes = f.getName().getBytes("UTF-8");
+    element = new String(bytes, "UTF-8"); 
+    System.out.println(element);
 }
    }
 }
