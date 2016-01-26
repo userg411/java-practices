@@ -4,70 +4,82 @@ import java.util.Stack;
 
 public class problem{
 	public static void main(String[] args){
-		/*String[][] in = {{"O","O","O"},
-						 {"X","O","X"},
-						 {"X","X","-"}}; 
-		System.out.println(isTicTac(in));
-		int a[] = {5, 2, 4, 1};
-		System.out.println(missingNumber(a));
-		int [] [] treasure = {{4,1}, {9,3}, {2,1}, {3,1}};
-		System.out.println(max_treasure(4,treasure,5));
-		System.out.println(differentSymbolsNaive("abcabdaaa"));
-		String inArrayOne[] = {"A","E","I","AA"};
-		String inArrayTwo[] = {"O","U","T","X"};
-		String result[] = mergeArrays(inArrayOne,inArrayTwo);
+		System.out.println(pr4());
 		
-		System.out.println(box(1));
-		System.out.println(Integer.MAX_VALUE);
-		System.out.println(Fib(99));
-		System.out.println(distribution("me pica aca y","c"));
-		*/
+	}
+	static int pr4(){
+		int res = 0; 
+		class Helper{
+			boolean isPalindrome(int n){
+				String s = String.valueOf(n);
+				for(int i =0; i<s.length()/2;i++){
+					if(s.charAt(i)!=s.charAt(s.length() -i -1))
+						return false;
+				}
+				return true;
+			}
+		}
+		Helper h = new Helper();
+		for(int i=100;i<=999; i++){
+			for(int j=i;j<=999; j++)
+			{
+				if(h.isPalindrome(i*j))
+					res = Math.max(res,i*j);
+			}
+		}
+		return res;
+	}
+	
+	static long pr3(long n){
+		class Helper{
+			boolean isPrime(long n){
+				for(long i=2; i*i<=n;i++){
+					if(n%i==0)
+						return false;
+				}
+				return true;
+			}
+		}
+		Helper h = new Helper();
+		long ans = 0;
+		for(long i = 2; i*i<n;i++){
+			if(n%i==0&&h.isPrime(i))
+				ans = Math.max(ans,i);
+			
+			
+		}
+		return ans;
+	}
+	static int pr2(){
+		int a = 0;
+		int b = 1;
+		int fib = 0;
+		int sum  = 0;
+		while(fib<4000000){
+			fib = a+b;
+			if(fib<4000000&&fib%2==0)
+				sum+=fib;
+			a=b;
+			b = fib;
+			
+			
+		}
+		return sum;
 		
-		int a = 4;	/* 60 = 0011 1100 */  
-		int b = 1;	/* 13 = 0000 1101 */
-		int c = 0;
-
-		c = a | b;       /* 12 = 0000 1100 */ 
 		
-		c = a & 1;     /* 215 = 1111 */
-		//System.out.println("a & 1  = " + c );
 		
-		c = b & 1;     /* 215 = 1111 */
-		//System.out.println("b & 1  = " + c );
-		
-		a>>=1;
-		b>>=1;
-		
-		c = a & 1;     /* 215 = 1111 */
-		//System.out.println("a & 1  = " + c );
-		
-		c = b | 1;     /* 215 = 1111 */
-		//System.out.println("b | 1  = " + c );
-		
-		//System.out.println("Ham dist = "+hammingDistance(5,3));
-		//System.out.println("Primeburg " + primeSum(8,17));
-		//System.out.println("sum " + Sum(6));
-		
-		//withdraw(110);
-		//System.out.println(isFibonacci(Integer.parseInt(args[0])));
-		//System.out.println(Digital_sum(Integer.parseInt(args[0])));
-		//System.out.println(HackIt(args[0]));
-		//System.out.println(hexa(29));
-		//System.out.println(LuckyNum(41,12312));
-		//int  aa[]  = {1,2,3};
-		//System.out.println(SumGroups(aa));
-		//System.out.println(Anagram("silent","listen"));
-		//System.out.println(Anagram("hey","yey"));
-		//System.out.println(Chocolates(8932434 ,22));
-		//System.out.println(nineDupe(9));
-		//System.out.println(virusScan("sddszzvirusxxxx"));
-		//int[] A = {3,3,4,2,4,4,2,4,4};
-		//System.out.println(Majority_Element(9, A));
-		System.out.println(correct_parentheses("()()[()()()[]([][])]"));
+	}
+	static int pr1(){
+		int r = 0;
+		for(int i=1; i<1000;i++){
+			if(i%3==0|i%5==0)
+				r+=i;
+		}
+		return r;
 	}
 	static boolean correct_parentheses(String seq){
 		
-		Stack s = new Stack();
+		Stack <Character>s = new Stack<Character>();
 		
 		for(int i=0;i<seq.length();i++){
 			
@@ -299,7 +311,7 @@ public class problem{
 	static boolean isFibonacci(int N){
 		
 		if(N==1) return true;
-		int a=1, b=1,c;
+		int a=1, b=1,c=0;
 		for(c=2;c<=N;)
 		{
 			c=a+b;
