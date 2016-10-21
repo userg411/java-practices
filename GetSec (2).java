@@ -26,9 +26,9 @@ import org.apache.poi.ss.usermodel.CellStyle;
 
 public class GetSec{ 
    // Set the following three variables with logon info the the CMS. 
-    public static final String strUser = "zadm-nabiyevs"; 
-    public static final String strCMS = "kzatapp0203"; 
-    public static final String strPwd = "Koba2015"; 
+    public static final String strUser = ""; 
+    public static final String strCMS = ""; 
+    public static final String strPwd = ""; 
     
    // Set this to true to display all advanced rights; false will just display a count of assigned rights if the access level is "advanced" 
     public static Boolean showAdvancedDetail = false; 
